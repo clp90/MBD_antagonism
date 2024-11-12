@@ -1,4 +1,4 @@
-# Epigenetic antagonism
+# All custom code for Epigenetic Antagonism paper
 Scripts and code for antagonism paper (2024) - link **TBD**
 
 General Dependencies:
