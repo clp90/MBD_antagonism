@@ -1,5 +1,6 @@
 # All custom code for Epigenetic Antagonism paper
 Scripts and code for antagonism paper (2024) - link **TBD**
+Also includes RDS files containing snmCT-seq transcriptomic data, as seurat objects (see bottom of file)
 
 General Dependencies:
 - all analyses for this project used genome annotations that we previously updated based on pollen RNA-seq data, the GTF files are available here: https://github.com/clp90/mbd56_pollen
@@ -82,6 +83,19 @@ Required on your `$PATH`:
 Other requirements (must be in same location as this script):
 - summarizeMethylation.py by CLP
 
+## snmCT-seq data RDS files
+Processed seurat objects are included. Expt 1 and 2 were analyzed together, while expt 3 data were projected onto the expt 1 and expt 2 data.
 
+This R code will regenerate UMAP in Fig. 3b:
+```
+fulldata = readRDS(file = paste("fulldata_final.rds",sep=''))
+DimPlot(fulldata, reduction = "umap", label = TRUE, repel = TRUE, cols = c("#BBBBBB","#DDD99F","#D8B077","#F0E442","#EBC524","#E69F00","#D5876A","#CC79A7","#9A5D7F","#A0C5B7","#54B3E9","#009E73"))
+```
+
+This R code will regenerate UMAPs in Ext. Data Fig. 9a:
+```
+fulldata = readRDS(file = paste("fulldata_final_expt3.rds",sep=''))
+DimPlot(fulldata_expt3, reduction = 'ref.umap', group.by = 'newclus_pool', label = FALSE, cols = c("#BBBBBB","#DDD99F","#D8B077","#F0E442","#EBC524","#E69F00","#D5876A","#9A5D7F","#A0C5B7","#54B3E9","#009E73"), split.by = "genotype")
+```
 
 
